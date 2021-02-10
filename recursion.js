@@ -138,14 +138,13 @@ function gatherStrings(obj) {
   // hidden base case: when you are done looping
   let out = [];
 
-  function _gatherStrings(obj){
-    for (let value of Object.values(obj)){
-      if (typeof value === 'object' && typeof value !== null){
+  function _gatherStrings(obj) {
+    for (let value of Object.values(obj)) {
+      if (typeof value === 'object' && typeof value !== null) {
         _gatherStrings(value);
-      } else {
-        if (typeof value === 'string'){
-          out.push(value);
-        }
+      }
+      if (typeof value === 'string') {
+        out.push(value);
       }
     }
   }
@@ -172,17 +171,24 @@ function gatherStrings(obj) {
 
 // O(log(n))
 function binarySearch(arr, val) {
-  // if (arr.length === 0) return -1;
+  let idx = -1;
 
-  // let mid = Math.round((arr.length - 1) / 2);
+  function _binarySearch(high, low) {
+    if (low > high) return -1;
 
-  // if (val > arr[mid]) {
-  //   return binarySearch(arr.slice(mid), val);
-  // } else if (val < arr[mid]) {
-  //   return binarySearch(arr.slice(0, mid), val);
-  // } else if (arr[mid] === val) {
-  //   return mid;
-  // }
+    let mid = Math.floor((high + low) / 2);
+
+    if (val === arr[mid]) {
+      return idx = mid;
+    } else if (val > arr[mid]) {
+      return _binarySearch(high, mid + 1);
+    } else if (val < arr[mid]) {
+      return _binarySearch(mid - 1, low);
+    } 
+  }
+
+  _binarySearch(arr.length, 0);
+  return idx;
 }
 
 module.exports = {
