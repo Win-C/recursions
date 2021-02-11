@@ -50,8 +50,8 @@ def dump(s):
     """Print each square on a new line."""
 
     # Is it not a list?
-    if not isinstance(s, list):
-        # Correct values?
+    if type(s) != list:
+        # Is it binary?
         if s == 0 or s == 1:
             print(s)
 

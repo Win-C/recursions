@@ -45,16 +45,37 @@ def validate(s):
     """Validate that a given square is valid."""
 
     # Is it not a list?
-    if s == 0 or s == 1:
-        return True
+    if type(s) != list:
+        # Is it binary?
+        return s == 0 or s == 1
 
-    elif isinstance(s, list):
+    else:
+        # is it correct length?
         if len(s) != 4:
             return False
-        for q in s:
-            return validate(q)
+        else:
+            # recurse over items in list
+            for q in s:
+                # if there is one False, return False for entire square
+                # Note: review this part. Gave you trouble
+                if not validate(q):
+                    return False
+            return True
 
-    return False
+    # # More elegant solution
+    # # Base case: it's a simple square, so as long as it's either 0 or 1
+    # if type(s) == int:
+    #     return s == 0 or s == 1
+
+    # # Base case: if not a list of 4, it's invalid
+    # if type(s) != list or len(s) != 4:
+    #     return False
+
+    # for q in s:
+    #     if not validate(q):
+    #         return False
+
+    # return True
 
 
 if __name__ == "__main__":
