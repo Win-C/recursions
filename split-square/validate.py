@@ -42,7 +42,19 @@ Split squares must contain exactly four parts::
 
 
 def validate(s):
-    """Validate that a given square is valid.."""
+    """Validate that a given square is valid."""
+
+    # Is it not a list?
+    if s == 0 or s == 1:
+        return True
+
+    elif isinstance(s, list):
+        if len(s) != 4:
+            return False
+        for q in s:
+            return validate(q)
+
+    return False
 
 
 if __name__ == "__main__":
