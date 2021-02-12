@@ -50,13 +50,10 @@ Be careful that we don't "simplify" a set of matching mixed squares:
 def simplify(s):
     """Simplify a split square:"""
 
-    out = []
-
     if type(s) != list:
         return s
 
-    for q in s:
-        out.append(simplify(q))
+    out = [simplify(q) for q in s]
 
     if all(q == out[0] for q in out) and type(out[0]) != list:
         out = out[0]
