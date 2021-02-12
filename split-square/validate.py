@@ -57,12 +57,12 @@ def validate(s):
             # recurse over items in list
             for q in s:
                 # if there is one False, return False for entire square
-                # Note: review this part. Gave you trouble
+                # Note: review this part!
                 if not validate(q):
                     return False
             return True
 
-    # # More elegant solution
+    # # More elegant solution provided
     # # Base case: it's a simple square, so as long as it's either 0 or 1
     # if type(s) == int:
     #     return s == 0 or s == 1
