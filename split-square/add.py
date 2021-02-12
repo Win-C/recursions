@@ -51,6 +51,27 @@ Unevenly-nested squares can be added::
 def add(s1, s2):
     """Produce new split square adding two input squares."""
 
+    if s1 == 0 and s2 == 0:
+        return 0
+
+    if s1 == 0 and s2 != 0:
+        return s2
+
+    if s1 != 0 and s2 == 0:
+        return s1
+
+    if s1 == 1 and s2 == 1:
+        return 1
+
+    if type(s1) != list and type(s2) == list:
+        return [add(s1, s2[idx]) for idx in range(4)]
+
+    if type(s1) == list and type(s2) != list:
+        return [add(s1[idx], s2) for idx in range(4)]
+
+    if type(s1) == list and type(s2) == list:
+        return [add(s1[idx], s2[idx]) for idx in range(4)]
+
 
 if __name__ == "__main__":
     import doctest
